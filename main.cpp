@@ -114,8 +114,25 @@ int main() {
 
     ind = false;
     string decod = "0";
+    clock_t start;
+    start = clock();
+    long double k = 0;
+    int min = 0;
+    int hour = 0;
 
     while (true) {
+
+        k = (clock() - start) / (double)CLOCKS_PER_SEC;
+
+        if (k > 60) {
+            min++;
+            k = 0;
+        }
+        if (min == 60) {
+            hour++;
+            min = 0;
+        }
+
         if (decod == token) {
             cout << "\n\n БЕРГАМОТА ПОЛНЫЙ РОТ оно закончило!!!!" << endl;
             break;
@@ -137,7 +154,10 @@ int main() {
 
         }
     }
-    cout << setw(10) << left << "\ndecode = " << decod;
+    cout << setw(10) << left << "\ndecode = " << decod << endl << "with time = "
+        << hour << " hours "
+        << min << " mins "
+        << fixed << setprecision(10) << k << " sec ";
 }
 
 
