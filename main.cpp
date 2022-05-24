@@ -116,17 +116,17 @@ int main() {
     string decod = "0";
     clock_t start;
     start = clock();
-    long double k = 0;
+    long double mils = 0;
     int min = 0;
     int hour = 0;
 
     while (true) {
 
-        k = (clock() - start) / (double)CLOCKS_PER_SEC;
+        mils = (clock() - start) / (double)CLOCKS_PER_SEC;
 
-        if (k > 60) {
+        if (mils > 60) {
             min++;
-            k = 0;
+            mils = 0;
         }
         if (min == 60) {
             hour++;
@@ -157,7 +157,7 @@ int main() {
     cout << setw(10) << left << "\ndecode = " << decod << endl << "with time = "
         << hour << " hours "
         << min << " mins "
-        << fixed << setprecision(10) << k << " sec ";
+        << fixed << setprecision(10) << mils << " sec ";
 }
 
 
